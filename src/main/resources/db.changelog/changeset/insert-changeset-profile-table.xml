@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="insert-into-profile" author="Nagibin Vlas">
+        <insert tableName="profile">
+            <column name="name" value="John"/>
+            <column name="rating" value="5.0"/>
+            <column name="balance" value="150.00"/>
+        </insert>
+        <insert tableName="profile">
+            <column name="name" value="Anna"/>
+            <column name="rating" value="5.0"/>
+            <column name="balance" value="150.00"/>
+        </insert>
+        <insert tableName="profile">
+            <column name="name" value="Vlas"/>
+            <column name="rating" value="5.0"/>
+            <column name="balance" value="150.00"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

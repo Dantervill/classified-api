@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_table_advertisement-comment" author="Nagibin Vlas">
+        <createTable tableName="advertisement_comment">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="body" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="header" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pasted_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="advertisement_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="FK_advertisement-comment_advertisement"
+                             referencedTableName="advertisement"/>
+            </column>
+            <column name="posted_by" type="bigint">
+                <constraints nullable="false" foreignKeyName="FK_advertisement-comment_profile"
+                             referencedTableName="profile"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

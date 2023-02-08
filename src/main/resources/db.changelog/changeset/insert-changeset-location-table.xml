@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="insert-into-location" author="Nagibin Vlas">
+        <insert tableName="location">
+            <column name="city" value="Moscow"/>
+            <column name="state" value="Moscow"/>
+        </insert>
+        <insert tableName="location">
+            <column name="city" value="Saint-Petersburg"/>
+            <column name="state" value="Saint-Petersburg"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

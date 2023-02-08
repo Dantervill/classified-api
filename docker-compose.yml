@@ -1,0 +1,33 @@
+# docker-compose.yml has a configuration to create a PostgreSQL database
+# in a Docker container and connect it to the container of the Spring Boot project
+# to run as a multi-container application.
+# Run the multi-container application -> docker-compose up -d where -d is running is detached mode
+# Stop the multi-container application -> docker-compose down
+
+version: '3.1'
+services:
+  app:
+    image: 'classified-api-docker.war'
+    ports:
+      - "8088:8088"
+    depends_on:
+      - PostgreSQL
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/classifiedapi
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=s%C%$27rewU9%
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+
+  PostgreSQL:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=s%C%$27rewU9%
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=classifiedapi
+    healthcheck:
+      test: ["CMD-SHELL", "pq_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

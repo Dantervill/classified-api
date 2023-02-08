@@ -1,0 +1,1 @@
+insert into profile values ('John', '+79124279041', 5, 150), ('', '', 5, 150);

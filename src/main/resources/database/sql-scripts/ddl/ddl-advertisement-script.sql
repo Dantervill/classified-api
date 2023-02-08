@@ -1,0 +1,2 @@
+insert into advertisement values (true, 'APPLE', 'BRAND_NEW', 'Selling Iphone 13', 50000, 'Iphone 13', 'ELECTRONICS', 1, 1, false),
+                                 (true, 'APPLE', 'SECOND_HAND', 'Selling used iphone 12', 25000, 'Iphone 12', 'ELECTRONICS', 1, 2, true);

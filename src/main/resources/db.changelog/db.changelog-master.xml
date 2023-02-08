@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Файл changelog или мастер файл - содержит список миграций (changeset),
+    которые применяются к базе данных. Миграции выполняются последовательно,
+    в том порядке в котором записаны. Возможные форматы файла: SQL, XML, JSON,
+    YAML.
+
+    Liquibase при старте работы ищет файл db.changelog-master в директории
+    src/main/resources/db/changelog
+ -->
+<databaseChangeLog logicalFilePath="db.changelog/db.changelog-master.xml"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <!-- Создание таблиц -->
+    <include file="db.changelog/changeset/create-changeset-role-table.xml"/>
+    <include file="db.changelog/changeset/create-changeset-profile-table.xml"/>
+    <include file="db.changelog/changeset/create-changeset-account-table.xml"/>
+    <include file="db.changelog/changeset/create-changeset-message-table.xml"/>
+    <include file="db.changelog/changeset/create-changeset-location-table.xml"/>
+    <include file="db.changelog/changeset/create-changeset-advertisement-table.xml"/>
+    <include file="db.changelog/changeset/create-changeset-advertisement_comment-table.xml"/>
+
+    <!-- Внесение данных -->
+    <include file="db.changelog/changeset/insert-changeset-role-table.xml"/>
+    <include file="db.changelog/changeset/insert-changeset-profile-table.xml"/>
+    <include file="db.changelog/changeset/insert-changeset-account-table.xml"/>
+    <include file="db.changelog/changeset/insert-changeset-location-table.xml"/>
+    <include file="db.changelog/changeset/insert-changeset-advertisement-table.xml"/>
+</databaseChangeLog>

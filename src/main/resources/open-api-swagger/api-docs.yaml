@@ -1,0 +1,512 @@
+openapi: 3.0.1
+info:
+  title: Classified API
+  version: "1,0"
+servers:
+- url: http://localhost:8088
+  description: Generated server url
+paths:
+  /api/v1/profile/management/editing:
+    put:
+      tags:
+      - user-profile-controller
+      operationId: editing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v1/profile/advertisements/active-advertisements/{id}:
+    put:
+      tags:
+      - advertisement-controller
+      operationId: updateAdvertisement
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdvertisementRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    delete:
+      tags:
+      - advertisement-controller
+      operationId: deleteAdvertisement
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/profile/advertisements/active-advertisements/{advertisementId}/status:
+    put:
+      tags:
+      - advertisement-controller
+      operationId: pay4Vip
+      parameters:
+      - name: advertisementId
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/users/{id}/profile/messages:
+    post:
+      tags:
+      - message-controller
+      operationId: sendMessage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v1/users/{id}/profile/advertisements/active-advertisements/{advertisementId}/comments:
+    post:
+      tags:
+      - comment-controller
+      operationId: postComment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      - name: advertisementId
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/profile/advertisements:
+    post:
+      tags:
+      - advertisement-controller
+      operationId: createAdvertisement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdvertisementRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/accounts/signup:
+    post:
+      tags:
+      - account-controller
+      operationId: signUp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+  /api/v1/accounts/signin:
+    post:
+      tags:
+      - account-controller
+      operationId: signIn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v1/users/{id}/profile/advertisements/sold-advertisements:
+    get:
+      tags:
+      - advertisement-controller
+      operationId: userSoldAdvertisements
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/profile/messages:
+    get:
+      tags:
+      - message-controller
+      operationId: messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v1/profile/messages/{id}:
+    get:
+      tags:
+      - message-controller
+      operationId: message
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /api/v1/profile/advertisements/sold-advertisements:
+    get:
+      tags:
+      - advertisement-controller
+      operationId: mySoldAdvertisements
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/advertisements:
+    get:
+      tags:
+      - advertisement-controller
+      operationId: getAdvertisementsContainingTitle_1
+      parameters:
+      - name: title
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: min
+        in: query
+        required: true
+        schema:
+          maximum: 1000000
+          minimum: 1
+          type: number
+      - name: max
+        in: query
+        required: true
+        schema:
+          maximum: 1000000
+          minimum: 1
+          type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/v1/admin/dashboard:
+    get:
+      tags:
+      - admin-controller
+      operationId: dashboard
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    ProfileRequest:
+      required:
+      - name
+      - phone
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          pattern: "(^8|7|\\+7)((\\d{10})|(\\s\\(\\d{3}\\)\\s\\d{3}\\s\\d{2}\\s\\\
+            d{2}))"
+          type: string
+    AdvertisementRequest:
+      required:
+      - brand
+      - condition
+      - description
+      - id
+      - location
+      - price
+      - title
+      - type
+      type: object
+      properties:
+        id:
+          minimum: 1
+          type: integer
+          format: int64
+        type:
+          type: string
+        title:
+          type: string
+        condition:
+          type: string
+        brand:
+          type: string
+        description:
+          type: string
+        price:
+          maximum: 1000000.0
+          exclusiveMaximum: false
+          minimum: 1.0
+          exclusiveMinimum: false
+          type: number
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+    LocationRequest:
+      required:
+      - city
+      - state
+      type: object
+      properties:
+        city:
+          type: string
+        state:
+          type: string
+    MessageRequest:
+      required:
+      - text
+      type: object
+      properties:
+        text:
+          type: string
+    CommentRequest:
+      required:
+      - body
+      - header
+      type: object
+      properties:
+        header:
+          type: string
+        body:
+          type: string
+    RegistrationRequest:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          pattern: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        issuedAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+    LoginRequest:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    Advertisement:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - ELECTRONICS
+        title:
+          type: string
+        condition:
+          type: string
+          enum:
+          - BRAND_NEW
+          - SECOND_HAND
+        brand:
+          type: string
+          enum:
+          - APPLE
+          - SAMSUNG
+          - UNKNOWN
+        description:
+          type: string
+        price:
+          type: number
+        active:
+          type: boolean
+        vip:
+          type: boolean
+        location:
+          $ref: '#/components/schemas/Location'
+        profile:
+          $ref: '#/components/schemas/Profile'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+    Comment:
+      type: object
+      properties:
+        postedBy:
+          $ref: '#/components/schemas/Profile'
+        postedAt:
+          type: string
+          format: date-time
+        header:
+          type: string
+        body:
+          type: string
+        advertisement:
+          $ref: '#/components/schemas/Advertisement'
+    Location:
+      type: object
+      properties:
+        city:
+          type: string
+        state:
+          type: string
+    Message:
+      type: object
+      properties:
+        recipient:
+          $ref: '#/components/schemas/Profile'
+        sender:
+          $ref: '#/components/schemas/Profile'
+        sentAt:
+          type: string
+          format: date-time
+        text:
+          type: string
+        delivered:
+          type: boolean
+        read:
+          type: boolean
+    Profile:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        rating:
+          type: number
+          format: double
+        balance:
+          type: number
+        advertisements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Advertisement'
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'

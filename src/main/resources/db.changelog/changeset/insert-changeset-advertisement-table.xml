@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="insert-into-advertisement" author="Nagibin Vlas">
+        <insert tableName="advertisement">
+            <column name="active" value="true"/>
+            <column name="brand" value="APPLE"/>
+            <column name="condition" value="SECOND_HAND"/>
+            <column name="description" value="Selling used Iphone 6s"/>
+            <column name="price" value="15000"/>
+            <column name="title" value="Iphone 6s"/>
+            <column name="type" value="ELECTRONICS"/>
+            <column name="location_id" value="1"/>
+            <column name="profile_id" value="3"/>
+            <column name="vip" value="false"/>
+        </insert>
+        <insert tableName="advertisement">
+            <column name="active" value="true"/>
+            <column name="brand" value="APPLE"/>
+            <column name="condition" value="BRAND_NEW"/>
+            <column name="description" value="Selling brand new Iphone 12"/>
+            <column name="price" value="55000"/>
+            <column name="title" value="Iphone 12"/>
+            <column name="type" value="ELECTRONICS"/>
+            <column name="location_id" value="1"/>
+            <column name="profile_id" value="3"/>
+            <column name="vip" value="true"/>
+        </insert>
+        <insert tableName="advertisement">
+            <column name="active" value="false"/>
+            <column name="brand" value="SAMSUNG"/>
+            <column name="condition" value="SECOND_HAND"/>
+            <column name="description" value="Selling used Samsung Galaxy Note 10"/>
+            <column name="price" value="50000"/>
+            <column name="title" value="Samsung Galaxy Note 10"/>
+            <column name="type" value="ELECTRONICS"/>
+            <column name="location_id" value="1"/>
+            <column name="profile_id" value="3"/>
+            <column name="vip" value="false"/>
+        </insert>
+
+        <insert tableName="advertisement">
+            <column name="active" value="true"/>
+            <column name="brand" value="APPLE"/>
+            <column name="condition" value="SECOND_HAND"/>
+            <column name="description" value="Selling used Iphone 11"/>
+            <column name="price" value="25000"/>
+            <column name="title" value="Iphone 11"/>
+            <column name="type" value="ELECTRONICS"/>
+            <column name="location_id" value="2"/>
+            <column name="profile_id" value="2"/>
+            <column name="vip" value="false"/>
+        </insert>
+        <insert tableName="advertisement">
+            <column name="active" value="true"/>
+            <column name="brand" value="APPLE"/>
+            <column name="condition" value="BRAND_NEW"/>
+            <column name="description" value="Selling brand new Iphone 13"/>
+            <column name="price" value="75000"/>
+            <column name="title" value="Iphone 13"/>
+            <column name="type" value="ELECTRONICS"/>
+            <column name="location_id" value="2"/>
+            <column name="profile_id" value="2"/>
+            <column name="vip" value="true"/>
+        </insert>
+        <insert tableName="advertisement">
+            <column name="active" value="false"/>
+            <column name="brand" value="APPLE"/>
+            <column name="condition" value="SECOND_HAND"/>
+            <column name="description" value="Selling used MacBook air 2020"/>
+            <column name="price" value="100000"/>
+            <column name="title" value="MacBook Air 2020"/>
+            <column name="type" value="ELECTRONICS"/>
+            <column name="location_id" value="2"/>
+            <column name="profile_id" value="2"/>
+            <column name="vip" value="false"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
